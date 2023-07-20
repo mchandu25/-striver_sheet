@@ -1,0 +1,19 @@
+pair<int,int> missingAndRepeating(vector<int> &arr, int n)
+{
+	unordered_map<int,int>m;
+	for(int i=0;i<n;i++)
+	{
+		m[arr[i]]++;
+	}
+	int repeating=-1;
+	int missing=-1;
+	for(int i=1;i<=n;i++)
+	{
+		if(m[i]==2)
+			repeating=i;
+		else if(m[i]==0)
+			missing=i;
+		if(repeating!=-1 && missing!=-1)
+			break;
+	}
+	return {missing,repeating};
